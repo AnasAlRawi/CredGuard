@@ -7,7 +7,7 @@ from openai import OpenAI
 
 from colorama import Fore
 
-client = OpenAI(api_key='sk-proj-d3ovBYVsmjl9sgMDNac7T3BlbkFJqp4veLnlzlGhb4COJ9oN')
+client = OpenAI(api_key='Add your OpenAI API Key Here')
 
 # Set your OpenAI API key here
 
@@ -160,9 +160,9 @@ def telnet_attack(host, username, password):
             print("Hydra command timed out.")
 
 ftp_successful_attempts = 0
-def telnet_attack(host, username, password):
+def ftp_attack(host, username, password):
     hydra_telnet_command = ('hydra -l ' + username + ' -p ' + password + ' -f ' + str(host) + ' ftp')
-    global telnet_successful_attempts
+    global ftp_successful_attempts
     try:
         result = subprocess.run(hydra_telnet_command, shell=True, capture_output=True, text=True, timeout=300)
         if "success" in result.stdout.lower():
@@ -214,7 +214,7 @@ nm = nmap.PortScanner()
 # Define your network range here
 network = input("Enter the network IP address with the mask (X.X.X.X/X): ")
 print("Scanning ", network)
-nm.scan(hosts=network, arguments='-sS -D RND -p 22,23,80,443 --open')
+nm.scan(hosts=network, arguments='-sS -D RND -Pn -p 20,21,22,23,80,443 --open')
 
 
 for host in nm.all_hosts():
@@ -377,7 +377,7 @@ for host in nm.all_hosts():
                     ssh_attack(host, username, password)
                             
                 if ssh_successful_attempts == 0:
-                    print(Fore.GREEN + "Device ", host, "Port: 23 is safe and is not on default credentials.")
+                    print(Fore.GREEN + "Device ", host, "Port: 22 is safe and is not on default credentials.")
                 elif ssh_successful_attempts == 1:
                         print(Fore.RED + "ATTENTION: Device:", host, "Port: 22, is still on defautl credentials (", ssh_correct_username, "/", ssh_correct_password, "), CHANGE IT IMMEDIATELY!")
 
