@@ -55,9 +55,6 @@ Add your OpenAI API key in the script where indicated.
 
 This tool is for educational and ethical use only. It is intended to help network administrators identify and secure devices with default credentials. Unauthorized use of this tool is prohibited and may be illegal. Always obtain permission from the network owner before scanning and testing their devices.
 
-## **License**
-
-This project is licensed under the MIT License. See the LICENSE file for more details.
 
 ## **Acknowledgements**
 
